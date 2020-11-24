@@ -7,6 +7,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { Wrapper } from "../components/Wrapper";
+import { InputField } from "../components/InputField";
 
 interface registerProps {}
 
@@ -21,16 +22,17 @@ const Register: React.FC<registerProps> = ({}) => {
       >
         {({ values, handleChange }) => (
           <Form>
-            <FormControl>
-              <FormLabel htmlFor="username">Username</FormLabel>
-              <Input
-                id="username"
-                placeholder="username"
-                value={values.username}
-                onChange={handleChange}
-              />
-              {/* <FormErrorMessage>{form.errors.name}</FormErrorMessage> */}
-            </FormControl>
+            <InputField
+              name="username"
+              placeholder="username"
+              label="username"
+            />
+            <InputField
+              name="password"
+              placeholder="password"
+              label="Password"
+              type="password"
+            />
           </Form>
         )}
       </Formik>
