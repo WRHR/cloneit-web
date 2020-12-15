@@ -36,13 +36,13 @@ const Register: React.FC<registerProps> = ({}) => {
           <Form>
             <InputField
               name="username"
-              placeholder="username"
-              label="username"
+              placeholder="Username"
+              label="Username"
             />
             <Box mt={4}>
               <InputField
                 name="password"
-                placeholder="password"
+                placeholder="Password"
                 label="Password"
                 type="password"
               />
