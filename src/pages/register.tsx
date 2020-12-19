@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Box, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
 import { Wrapper } from "../components/Wrapper";
 import { InputField } from "../components/InputField";
 import { useRegisterMutation } from "../generated/graphql";
@@ -35,11 +36,7 @@ const Register: React.FC<registerProps> = ({}) => {
               label="Username"
             />
             <Box mt={4}>
-              <InputField
-                name="email"
-                placeholder="email"
-                label="email"
-              />
+              <InputField name="email" placeholder="email" label="email" />
             </Box>
             <Box mt={4}>
               <InputField

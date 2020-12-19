@@ -1,4 +1,5 @@
-import { Box, Button } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/button";
 import { Formik, Form } from "formik";
 import React, { useState } from "react";
 import { InputField } from "../components/InputField";
@@ -14,7 +15,7 @@ export const ForgotPassword: React.FC<{}> = ({}) => {
     <Wrapper variant="small">
       <Formik
         initialValues={{ email: "" }}
-        onSubmit={async (values,) => {
+        onSubmit={async (values) => {
           await forgotPassword(values);
           setComplete(true);
         }}

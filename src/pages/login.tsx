@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Box, Button, Flex, Link } from "@chakra-ui/react";
+import { Box, Flex, Link } from "@chakra-ui/layout";
+import {Button} from '@chakra-ui/button'
 import { Wrapper } from "../components/Wrapper";
 import { InputField } from "../components/InputField";
 import { useLoginMutation } from "../generated/graphql";
