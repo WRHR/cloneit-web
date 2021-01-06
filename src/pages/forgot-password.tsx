@@ -1,48 +1,45 @@
-import { Box } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
-import { Formik, Form } from "formik";
 import React, { useState } from "react";
-import { InputField } from "../components/InputField";
-import { Wrapper } from "../components/Wrapper";
-import { createUrqlClient } from "../utils/createUrqlClient";
 import { withUrqlClient } from "next-urql";
+import { createUrqlClient } from "../utils/createUrqlClient";
+import { Wrapper } from "../components/Wrapper";
+import { Formik, Form } from "formik";
+import { InputField } from "../components/InputField";
+import { Box, Button } from "@chakra-ui/core";
 import { useForgotPasswordMutation } from "../generated/graphql";
+import { withApollo } from "../utils/withApollo";
 
-export const ForgotPassword: React.FC<{}> = ({}) => {
+const ForgotPassword: React.FC<{}> = ({}) => {
   const [complete, setComplete] = useState(false);
-  const [, forgotPassword] = useForgotPasswordMutation();
+  const [forgotPassword] = useForgotPasswordMutation();
   return (
     <Wrapper variant="small">
       <Formik
         initialValues={{ email: "" }}
         onSubmit={async (values) => {
-          await forgotPassword(values);
+          await forgotPassword({ variables: values });
           setComplete(true);
         }}
       >
         {({ isSubmitting }) =>
           complete ? (
             <Box>
-              if an account with that email exists, an email has been sent
+              if an account with that email exists, we sent you can email
             </Box>
           ) : (
             <Form>
-              <Box mt={4}>
-                <InputField
-                  name="email"
-                  placeholder="Email"
-                  label="Email"
-                  type="email"
-                />
-              </Box>
-
+              <InputField
+                name="email"
+                placeholder="email"
+                label="Email"
+                type="email"
+              />
               <Button
                 mt={4}
                 type="submit"
                 isLoading={isSubmitting}
-                colorScheme="teal"
+                variantColor="teal"
               >
-                Send link
+                forgot password
               </Button>
             </Form>
           )
@@ -52,4 +49,4 @@ export const ForgotPassword: React.FC<{}> = ({}) => {
   );
 };
 
-export default withUrqlClient(createUrqlClient)(ForgotPassword);
+export default withApollo({ ssr: false })(ForgotPassword);
